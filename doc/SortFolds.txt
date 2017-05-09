@@ -1,0 +1,41 @@
+*SortFolds.txt*	For Vim version 7.4	Last change: 2017 May 9
+
+Version: 0.1.0
+Author : Oliver Breitwieser <oliver.breitwieser@gmail.com>
+License: MIT license
+
+
+                SortFolds - sort folds by their first line
+
+==============================================================================
+USAGE                                   *SortFolds* *SortFolds-usage*
+
+    Sorting |folds| is not easily possible in vanilla vim. You could join all
+    lines in a fold, sort and split them up again; however, it is time
+    consuming and tedious.
+
+    This little plugin solves that issue: It sorts a visually selected region
+    while keeping closed folds intact. Since folds can be created in a variaty
+    of ways (|fold-methods|), it is therefore straight-forward to sort
+    arbitrary groups of text based on their first line.
+
+    One use-case is to sort functions alphabetically after the fact.
+
+==============================================================================
+MAPPINGS                                *SortFolds-mappings*
+
+    Currently there is only one binding - |<Plug>SortFolds| - that needs to be
+    bound in visual mode. The default is:
+
+                                        *<Plug>SortFolds*
+>
+    vmap <Leader>sf <Plug>SortFolds
+<
+    Then visually select the region you want to sort and use the mapping.
+
+==============================================================================
+REQUIREMENTS                            *SortFolds-requirements*
+
+    SortFolds needs |+python| support enabled.
+
+ vim:tw=78:ts=4:ft=help:norl:
