@@ -1,5 +1,7 @@
 # SortFolds
 
+## Overview
+
 ![](https://raw.github.com/obreitwi/vim-sort-folds/master/doc/demo.gif)  
 _(Demo \w [SimpylFold](https://github.com/tmhedberg/SimpylFold),
 colorscheme [xoria256](https://github.com/vim-scripts/xoria256.vim))_
@@ -16,3 +18,20 @@ their first line.
 One use-case (demonstrated above and the original motivation for this plugin)
 is to sort functions alphabetically after the fact.
 
+
+## Installation
+
+`SortFolds` is compatible to the most commonly used plugin managers for vim.
+Just drop the following line in your `.vimrc`:
+
+`Plugin 'obreitwi/vim-sort-folds'`
+(for [Vundle](https://github.com/VundleVim/Vundle.vim))
+
+`Plug 'obreitwi/vim-sort-folds'`
+(for [vim-plug](https://github.com/junegunn/vim-plug))
+
+
+## Mappings
+
+Per default, sorting visually selected folds is mapped to `<leader>sf`, if
+available, but can be easily remapped.
