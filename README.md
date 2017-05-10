@@ -9,7 +9,7 @@ in a fold, sort and split them up again; however, it is time consuming and
 tedious.
 
 This little plugin solves that issue: It sorts a visually selected region while
-keeping closed folds intact. Since folds can be created in a variaty of ways,
+keeping closed folds intact. Since folds can be created in a variety of ways,
 it is therefore straight-forward to sort arbitrary groups of text based on
 their first line.
 
