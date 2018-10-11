@@ -18,7 +18,7 @@ __all__ = [
         "sort_folds",
     ]
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 
 class Fold(object):
@@ -44,9 +44,8 @@ class Fold(object):
     def __len__(self):
         return self.end - self.start
 
-    @property
-    def first_line(self):
-        return vim.current.buffer[self.start]
+    def __getitem__(self, line_number):
+        return vim.current.buffer[self.start + line_number]
 
     @property
     def lines(self):
@@ -54,7 +53,7 @@ class Fold(object):
             yield line
 
 
-def debug():
+def debug(sorting_line_number=1):
     """
         Print debug information about how folds are extracted and sorted.
     """
@@ -68,7 +67,7 @@ def debug():
     print("#  Sorted  #")
     print("############")
 
-    sorted_folds = sorted(get_folds(), key=lambda f: f.first_line)
+    sorted_folds = sorted(get_folds(), key=lambda f: f[sorting_line_number])
     print_folds(sorted_folds)
 
 
@@ -216,8 +215,8 @@ def print_folds(folds):
             print(fold.level, line)
 
 
-def sort_folds():
-    sorted_folds = sorted(get_folds(), key=lambda f: f.first_line)
+def sort_folds(sort_line=0):
+    sorted_folds = sorted(get_folds(), key=lambda f: f[sort_line])
 
     sorted_lines = list(it.chain(*it.imap(lambda f: f.lines, sorted_folds)))
     vim.current.range[:] = sorted_lines

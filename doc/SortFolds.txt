@@ -1,6 +1,6 @@
-*SortFolds.txt*	For Vim version 7.4	Last change: 2017 May 9
+*SortFolds.txt*	For Vim version 8.0	Last change: 2018 October 11
 
-Version: 0.1.0
+Version: 0.2.0
 Author : Oliver Breitwieser <oliver.breitwieser@gmail.com>
 License: MIT license
 
@@ -32,6 +32,17 @@ MAPPINGS                                *SortFolds-mappings*
     vmap <Leader>sf <Plug>SortFolds
 <
     Then visually select the region you want to sort and use the mapping.
+
+==============================================================================
+SORTING BY OTHER LINES IN FOLD          *SortFolds-custom-sort-line*
+
+    Per default folds are sorted based on the contents of the first line in
+    each fold. If, for some reason, you need to sort folds by the contents of
+    another line, you can do by directly calling `SortFolds#SortFolds` with
+    the given line number. Lines in folds are zero-indexed. That means to sort
+    based on the 42th line you would map:
+>
+    vmap <silent> <Leader>sf :call SortFolds#SortFolds(41)<CR>
 
 ==============================================================================
 REQUIREMENTS                            *SortFolds-requirements*
