@@ -30,8 +30,8 @@ class Fold(object):
             Describes fold of `level` at starting line `start` till line `end`
             (0-index) of length `length`.
         """
-        assert end or length
-        assert not end or not length
+        assert end is None or length is None
+        assert end is not None or length is not None
 
         self.level = level
         self.start = start
