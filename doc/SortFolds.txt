@@ -21,6 +21,9 @@ USAGE                                   *SortFolds* *SortFolds-usage*
 
     One use-case is to sort functions alphabetically after the fact.
 
+    NOTE: This plugin was not tested and is not expected to work with
+    `foldmethod` set to `manual` for now.
+
 ==============================================================================
 MAPPINGS                                *SortFolds-mappings*
 

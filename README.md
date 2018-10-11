@@ -18,6 +18,8 @@ their first line.
 One use-case (demonstrated above and the original motivation for this plugin)
 is to sort functions alphabetically after the fact.
 
+Furthermore, it is possible to sort based on a other lines than then first.
+
 
 ## Installation
 
@@ -35,3 +37,8 @@ Just drop the following line in your `.vimrc`:
 
 Per default, sorting visually selected folds is mapped to `<leader>sf`, if
 available, but can be easily remapped.
+
+
+## Note: manual foldmethod
+This plugin was not tested and is not expected to work with `foldmethod` set to
+`manual` for now.
