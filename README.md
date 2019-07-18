@@ -26,10 +26,10 @@ Furthermore, it is possible to sort based on a other lines than then first.
 `SortFolds` is compatible to the most commonly used plugin managers for vim.
 Just drop the following line in your `.vimrc`:
 
-`Plugin 'obreitwi/vim-sort-folds'`
+`Plugin 'mikeboiko/vim-sort-folds'`
 (for [Vundle](https://github.com/VundleVim/Vundle.vim))
 
-`Plug 'obreitwi/vim-sort-folds'`
+`Plug 'mikeboiko/vim-sort-folds'`
 (for [vim-plug](https://github.com/junegunn/vim-plug))
 
 
