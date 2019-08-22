@@ -7,7 +7,7 @@ py import vim
 py import SortFolds
 
 function! SortFolds#SortFolds(...) range
-    let a:sortline = get(a:, 0, 0)
+    let sortline = get(a:, 0, 0)
     silent execute a:firstline. "," . a:lastline .
-                \ " py SortFolds.sort_folds(" . a:sortline .  ")"
+                \ " py SortFolds.sort_folds(" . sortline .  ")"
 endfunction
