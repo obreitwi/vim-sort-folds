@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # encoding: utf-8
 #
 # SortFolds/__init__.py - Sort closed folds based on first line
@@ -152,7 +152,7 @@ def merge_folds(folds_gen):
     find_min, folds_gen = it.tee(folds_gen)
 
     # the folds we want to sort are one fold level above the minumum we found
-    level_to_sort = min(it.imap(lambda l: l.level, find_min)) + 1
+    level_to_sort = min(list(map(lambda l: l.level, find_min))) + 1
 
     # Depending on what range the user selects, vim will report a different
     # foldlevel for the very first line, leading to undesired behavior.
@@ -218,7 +218,7 @@ def print_folds(folds):
 def sort_folds(sort_line=0):
     sorted_folds = sorted(get_folds(), key=lambda f: f[sort_line])
 
-    sorted_lines = list(it.chain(*it.imap(lambda f: f.lines, sorted_folds)))
+    sorted_lines = list(it.chain(*list(map(lambda f: f.lines, sorted_folds))))
     vim.current.range[:] = sorted_lines
 
 
@@ -232,7 +232,7 @@ def _get_folds():
     cr = vim.current.range
     foldlevels = line_range_to_foldlevel(cr.start, cr.end)
 
-    lvl_and_length = map(lambda (lvl, items): (lvl, len(list(items))),
+    lvl_and_length = map(lambda lvl, items: (lvl, len(list(items))),
                          it.groupby(foldlevels))
 
     current_start = cr.start

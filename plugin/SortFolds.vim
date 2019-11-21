@@ -11,7 +11,7 @@ let g:loaded_sort_folds = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
-if !has("python")
+if !has("python3")
     echohl WarningMsg
     echom "SortFolds requires +python."
     finish
