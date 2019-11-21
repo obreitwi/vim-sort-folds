@@ -3,11 +3,11 @@
 " Version:      0.2.0
 " License:      MIT license
 
-py import vim
-py import SortFolds
+py3 import vim
+py3 import SortFolds
 
 function! SortFolds#SortFolds(...) range
     let sortline = get(a:, 0, 0)
     silent execute a:firstline. "," . a:lastline .
-                \ " py SortFolds.sort_folds(" . sortline .  ")"
+                \ " py3 SortFolds.sort_folds(" . sortline .  ")"
 endfunction
