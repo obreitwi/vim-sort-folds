@@ -23,7 +23,7 @@ Furthermore, it is possible to sort based on a other lines than then first.
 
 ## Installation
 
-`SortFolds` is compatible to the most commonly used plugin managers for vim.
+`SortFolds` is compatible with most plugin managers for vim.
 Just drop the following line in your `.vimrc`:
 
 `Plugin 'obreitwi/vim-sort-folds'`
@@ -40,5 +40,13 @@ available, but can be easily remapped.
 
 
 ## Note: manual foldmethod
+
 This plugin was not tested and is not expected to work with `foldmethod` set to
 `manual` for now.
+
+
+## Python 3
+
+`vim-sort-folds` is now Python 3 compatible. The last Python 2 compatible
+commit is still available as tag
+[`last-py2`](https://github.com/obreitwi/vim-sort-folds/releases/tag/last-py2).
