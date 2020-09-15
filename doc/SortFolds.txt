@@ -1,4 +1,4 @@
-*SortFolds.txt*	For Vim version 8.0	Last change: 2018 October 11
+*SortFolds.txt*	For Vim version 8.0	Last change: 2020 September 16
 
 Version: 1.0.0
 Author : Oliver Breitwieser <oliver.breitwieser@gmail.com>
@@ -52,6 +52,15 @@ SORTING BY OTHER LINES IN FOLD          *SortFolds-custom-sort-line*
     based on the 42th line you would map:
 >
     vmap <silent> <Leader>sf :call SortFolds#SortFolds(41)<CR>
+
+==============================================================================
+CONFIGURATION                           *SortFolds-configuration*
+
+    You can ignore case when sorting by modifying this variable:
+>
+    let g:sort_folds_ignore_case = 1
+<
+    Default is 0
 
 ==============================================================================
 REQUIREMENTS                            *SortFolds-requirements*
