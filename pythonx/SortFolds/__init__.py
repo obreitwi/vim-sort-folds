@@ -67,7 +67,8 @@ def debug(sorting_line_number=1):
     print("#  Sorted  #")
     print("############")
 
-    sorted_folds = sorted(get_folds(), key=lambda f: f[sorting_line_number])
+    sorted_folds = sorted(get_folds(),
+                          key=get_fold_to_sort_key(sorting_line_number))
     print_folds(sorted_folds)
 
 
@@ -215,8 +216,16 @@ def print_folds(folds):
             print(fold.level, line)
 
 
+def get_fold_to_sort_key(sort_line):
+    ignore_case = vim.eval("g:sort_folds_ignore_case")
+    if ignore_case == "0":
+        return lambda f: f[sort_line]
+    else:
+        return lambda f: f[sort_line].casefold()
+
+
 def sort_folds(sort_line=0):
-    sorted_folds = sorted(get_folds(), key=lambda f: f[sort_line])
+    sorted_folds = sorted(get_folds(), key=get_fold_to_sort_key(sort_line))
 
     sorted_lines = list(it.chain(*list(map(lambda f: f.lines, sorted_folds))))
     vim.current.range[:] = sorted_lines

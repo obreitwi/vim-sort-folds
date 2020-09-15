@@ -17,6 +17,10 @@ if !has("python3")
     finish
 endif
 
+if !exists("g:sort_folds_ignore_case")
+  let g:sort_folds_ignore_case = 0
+endif
+
 vnoremap <silent> <Plug>SortFolds :call SortFolds#SortFolds()<CR>
 
 if !hasmapto("<Plug>SortFolds", "v")
