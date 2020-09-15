@@ -44,6 +44,13 @@ available, but can be easily remapped.
 This plugin was not tested and is not expected to work with `foldmethod` set to
 `manual` for now.
 
+## Configuration
+
+You can ignore case when sorting by modifying this variable:
+```vim
+let g:sort_folds_ignore_case = 1
+```
+Default is `0`
 
 ## Python 3
 
