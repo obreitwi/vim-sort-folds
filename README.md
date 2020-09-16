@@ -18,7 +18,7 @@ their first line.
 One use-case (demonstrated above and the original motivation for this plugin)
 is to sort functions alphabetically after the fact.
 
-Furthermore, it is possible to sort based on a other lines than then first.
+Furthermore, it is possible to sort based on other lines than then first.
 
 
 ## Installation

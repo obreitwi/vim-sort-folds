@@ -1,6 +1,6 @@
 " SortFolds.vim - Sort closed folds based on first line
 " Maintainer:   Oliver Breitwieser
-" Version:      0.2.0
+" Version:      1.0.0
 " License:      MIT license
 
 if exists("g:loaded_sort_folds")
@@ -13,7 +13,7 @@ set cpo&vim
 
 if !has("python3")
     echohl WarningMsg
-    echom "SortFolds requires +python."
+    echom "SortFolds requires +python3."
     finish
 endif
 
