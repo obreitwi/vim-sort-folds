@@ -1,6 +1,6 @@
 " SortFolds.vim - Sort closed folds based on first line
 " Maintainer:   Oliver Breitwieser
-" Version:      1.0.0
+" Version:      1.1.0
 " License:      MIT license
 
 py3 import vim

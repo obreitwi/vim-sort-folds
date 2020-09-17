@@ -1,3 +1,6 @@
+## v1.1.0
+
+* Added option to ignore case (thanks Daniel Berg!)
 
 ## v1.0.0
 
