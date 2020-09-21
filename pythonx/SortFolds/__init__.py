@@ -18,7 +18,7 @@ __all__ = [
         "sort_folds",
     ]
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 
 class Fold(object):
