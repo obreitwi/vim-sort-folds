@@ -56,6 +56,8 @@ SORTING BY OTHER LINES IN FOLD          *SortFolds-custom-sort-line*
 ==============================================================================
 CONFIGURATION                           *SortFolds-configuration*
 
+                                        *g:sort_folds_ignore_case*
+
     You can ignore case when sorting by modifying this variable:
 >
     let g:sort_folds_ignore_case = 1
