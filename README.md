@@ -39,11 +39,6 @@ Per default, sorting visually selected folds is mapped to `<leader>sf`, if
 available, but can be easily remapped.
 
 
-## Note: manual foldmethod
-
-This plugin was not tested and is not expected to work with `foldmethod` set to
-`manual` for now.
-
 ## Configuration
 
 You can ignore case when sorting by modifying this variable:
