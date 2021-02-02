@@ -25,21 +25,42 @@ class Fold(object):
     """
         Object representing a fold in the current buffer.
     """
-    def __init__(self, level, start, end=None, length=None):
+    def __init__(self, level, start, *, end=None, length=None):
         """
-            Describes fold of `level` at starting line `start` till line `end`
-            (0-index) of length `length`.
-        """
-        assert end is None or length is None
-        assert end is not None or length is not None
+            Create a new Fold.
 
-        self.level = level
-        self.start = start
+            :param level:   fold level (int)
+            :param start:   starting line (int)
+            :param end:     first line _after_ the fold
+            :param length:  length of the fold.
+        """
+        if end is None and length is None:
+            raise ValueError("Need to specify either end or length.")
+        elif end is not None and length is not None:
+            raise ValueError("Cannot specify both end and length.")
+
+        self._level = level
+        self._start = start
 
         if length is None:
-            self.end = end
+            self._end = end
         else:
-            self.end = self.start + length
+            self._end = self.start + length
+
+    @property
+    def start(self):
+        ":return: Starting line of fold."
+        return self._start
+
+    @property
+    def end(self):
+        ":return: First line not part of fold."
+        return self._end
+
+    @property
+    def level(self):
+        ":return: Level of fold."
+        return self._level
 
     def __len__(self):
         return self.end - self.start
