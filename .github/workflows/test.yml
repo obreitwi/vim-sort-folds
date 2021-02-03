@@ -1,0 +1,35 @@
+name: Run tests in vim
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        vim_type: ['vim', 'neovim']
+        version: ['head', 'stable']
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Vim
+        id: vim
+        uses: thinca/action-setup-vim@v1
+        with:
+          download: always
+
+      - name: Setup tests
+        run: ./test/setup.sh
+        env:
+          EDITOR: ${{ steps.vim.outputs.executable }}
+
+      - name: Run tests
+        run: ./test/run.sh ./test/testcase_simple_manual
+        env:
+          EDITOR: ${{ steps.vim.outputs.executable }}
