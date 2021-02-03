@@ -4,10 +4,10 @@
 " License:      MIT license
 
 py3 import vim
-py3 import SortFolds
+py3 import sort_folds
 
 function! SortFolds#SortFolds(...) range
     let sortline = get(a:, 0, 0)
     silent execute a:firstline. "," . a:lastline .
-                \ " py3 SortFolds.sort_folds(" . sortline .  ")"
+                \ " py3 sort_folds.sort_folds(" . sortline .  ")"
 endfunction

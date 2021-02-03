@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # encoding: utf-8
 #
-# SortFolds/__init__.py - Sort closed folds based on first line
+# sort_folds/__init__.py - Sort closed folds based on first line
 # Maintainer:   Oliver Breitwieser
 #
 
