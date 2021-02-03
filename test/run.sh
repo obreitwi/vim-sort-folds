@@ -17,7 +17,7 @@ while (( $# > 0 )); do
     file_out="${dir_testcase}/output.txt"
     file_exp="${dir_testcase}/expected.txt"
 
-    rm "${file_out}" || true
+    rm "${file_out}" &>/dev/null || true
 
     cat >"${file_cmd}" <<EOF
 :set foldmethod=marker
