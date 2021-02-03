@@ -26,7 +26,7 @@ while (( $# > 0 )); do
 :q!
 EOF
 
-    nvim -s "${file_cmd}" "${file_in}"
+    ${EDITOR} -s "${file_cmd}" "${file_in}"
 
     rm "${file_cmd}"
 
