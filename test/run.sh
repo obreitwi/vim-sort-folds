@@ -22,11 +22,13 @@ while (( $# > 0 )); do
     cat >"${file_cmd}" <<EOF
 :set foldmethod=marker
 :%call SortFolds#SortFolds()
-:write
-:q!
+:messages
+:wq
 EOF
 
-    ${EDITOR} -s "${file_cmd}" "${file_out}"
+    true > messages.log
+
+    ${EDITOR} -V0messages.log -s "${file_cmd}" "${file_out}" 2>&1
 
     rm "${file_cmd}"
 
@@ -34,6 +36,7 @@ EOF
         exit 0
     else
         echo "TEST FAILED" >&2
+        cat messages.log >&2
         exit 1
     fi
 done
