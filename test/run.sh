@@ -17,16 +17,16 @@ while (( $# > 0 )); do
     file_out="${dir_testcase}/output.txt"
     file_exp="${dir_testcase}/expected.txt"
 
-    rm "${file_out}" &>/dev/null || true
+    cp -v "${file_in}" "${file_out}"
 
     cat >"${file_cmd}" <<EOF
 :set foldmethod=marker
 :%call SortFolds#SortFolds()
-:write ${file_out}
+:write
 :q!
 EOF
 
-    ${EDITOR} -s "${file_cmd}" "${file_in}"
+    ${EDITOR} -s "${file_cmd}" "${file_out}"
 
     rm "${file_cmd}"
 
