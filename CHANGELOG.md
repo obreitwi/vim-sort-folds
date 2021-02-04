@@ -1,3 +1,9 @@
+## v1.2.0 (under development)
+
+* Internal:
+  * Renamed Python module: `SortFolds` -> `sort_folds`
+  * Added github workflows.
+
 ## v1.1.0
 
 * Added option to ignore case (thanks Daniel Berg!)
