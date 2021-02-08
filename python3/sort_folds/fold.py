@@ -116,6 +116,8 @@ def get_folds():
         # adjust for line numbers starting at one
         return int(vim.eval("line('.')"))-1
 
+    folds = []
+
     while fold_end < cr.end:
         fold_end = min(move_to_next_fold(), cr.end)
 
@@ -136,6 +138,8 @@ def get_folds():
         fold = Fold(start=fold_start, end=fold_end)
 
         if len(fold) > 0:
-            yield fold
+            folds.append(fold)
 
         fold_start = fold_end
+
+    return folds
