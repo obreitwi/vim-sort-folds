@@ -3,6 +3,7 @@
 * Internal:
   * Renamed Python module: `SortFolds` -> `sort_folds`
   * Added github workflows.
+  * Refactored code into submodules.
 
 ## v1.1.0
 
