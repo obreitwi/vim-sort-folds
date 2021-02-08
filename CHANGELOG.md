@@ -4,6 +4,7 @@
   * Renamed Python module: `SortFolds` -> `sort_folds`
   * Added github workflows.
   * Refactored code into submodules.
+  * Uncluttered code-base by removing unused code.
 
 ## v1.1.0
 
