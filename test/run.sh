@@ -28,7 +28,6 @@ while (( $# > 0 )); do
 
     if diff "${file_out}" "${file_exp}"; then
         echo "${version_info} SUCCESS"  >&2
-        exit 0
     else
         echo "${version_info} FAILED" >&2
         cat messages.log >&2
