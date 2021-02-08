@@ -30,7 +30,10 @@ def preserve_cursor():
     """
     pos = vim.current.window.cursor
 
-    yield
-
-    # restore cursor position
-    vim.current.window.cursor = pos
+    try:
+        yield
+    except:
+        raise
+    finally:
+        # restore cursor position
+        vim.current.window.cursor = pos
