@@ -49,6 +49,37 @@ let g:sort_folds_ignore_case = 1
 ```
 Default is `0`
 
+
+## Custom key-function
+
+Sometimes you need to sort folds by some custom key.
+For this reason, you can define a custom sort function in Python that maps fold
+contents (essentially a list of lines) to a a key (a string) by which the fold
+will be sorted.
+
+Afterwards, you need to set `sort_folds_key_function` to the name of the
+function. You can either set it `g:`lobally or per `b:`uffer.
+
+### Example: Sort BibTeX-entries by key only, but not entry type
+
+BibTeX-entries can be of several types (`article`, `book`, `inproceedings`,
+`online`, to name a few…). However, we might want to sort them by citekey
+regardless of type.
+
+Hence, we might add a piece of code to extract the citekey:
+```vim
+py3 <<EOF
+def get_citekey(fold):
+    # very crude extraction without regexes
+    return fold[0].split("{")[1].split(",")[0]
+EOF
+
+autocmd FileType bib let sort_folds_key_function="get_citekey"
+```
+
+Note: `get_citekey` is already part of the
+[builtin functions](python3/sort_folds/key_functions.py).
+
 ## Python 3
 
 `vim-sort-folds` is now Python 3 compatible. The last Python 2 compatible
