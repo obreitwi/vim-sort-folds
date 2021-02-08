@@ -31,15 +31,6 @@ def debug(sorting_line_number=1):
     print_folds(sorted_folds)
 
 
-def print_foldlevel():
-    """
-    Print foldlevel of all lines in current range.
-    """
-    cr = vim.current.range
-    for lvl, line in zip(fold.line_range_to_foldlevel(cr.start, cr.end), cr[:]):
-        print(lvl, line)
-
-
 def print_folds(folds):
     """
         Prints all supplied folds for debug purposes.

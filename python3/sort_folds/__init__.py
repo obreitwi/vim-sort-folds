@@ -9,7 +9,6 @@ import vim
 
 __all__ = [
         "debug",
-        "print_foldlevel"
         "sort_folds",
     ]
 
@@ -17,4 +16,4 @@ __version__ = "1.1.0"
 
 
 from .sort import sort_folds
-from .debug import debug, print_foldlevel
+from .debug import debug

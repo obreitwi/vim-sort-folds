@@ -110,13 +110,3 @@ def get_folds():
             yield fold
 
         fold_start = fold_end
-
-
-def line_range_to_foldlevel(start, end):
-    """
-        Get the fold level for all lines in [start, end] in the current buffer.
-
-        (Unfortunately, this is not enough to find all folds, as adjacent folds
-        can have the same line number).
-    """
-    return map(get_foldlevel, range(start, end+1))
