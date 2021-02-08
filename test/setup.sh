@@ -16,6 +16,8 @@ set runtimepath^=${FOLDER_PLUGIN} runtimepath+=${FOLDER_PLUGIN}/after
 EOF
 }
 
+echo "Setting up for $(${EDITOR} --version)" >&2
+
 # check if nvim exists
 if [ "${EDITOR}" = "nvim" ]; then
     mkdir -p "${HOME}/.config/nvim"
