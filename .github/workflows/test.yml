@@ -15,9 +15,11 @@ jobs:
       matrix:
         vim_type: ['vim', 'neovim']
         version: ['head', 'stable']
+        python-version: [ "3.6", "3.7", "3.8", "3.9" ]
 
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
       - name: Setup Vim
         id: vim
         uses: thinca/action-setup-vim@v1
