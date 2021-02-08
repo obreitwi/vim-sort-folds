@@ -5,6 +5,7 @@
   * Added github workflows.
   * Refactored code into submodules.
   * Uncluttered code-base by removing unused code.
+* Add support to sort by custom key functions.
 
 ## v1.1.0
 
