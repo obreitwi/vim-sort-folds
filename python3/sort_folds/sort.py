@@ -15,5 +15,5 @@ def sort_folds(sort_line=0):
     """
     sorted_folds = sorted(fold.get_folds(), key=config.get_fold_to_sort_key(sort_line))
 
-    sorted_lines = list(it.chain(*list(map(lambda f: f, sorted_folds))))
+    sorted_lines = list(it.chain.from_iterable(sorted_folds))
     vim.current.range[:] = sorted_lines
