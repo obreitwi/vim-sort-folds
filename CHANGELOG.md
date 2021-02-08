@@ -1,4 +1,4 @@
-## v1.2.0 (under development)
+## v1.2.0
 
 * Internal:
   * Renamed Python module: `SortFolds` -> `sort_folds`

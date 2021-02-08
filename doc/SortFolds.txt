@@ -1,7 +1,7 @@
-*SortFolds.txt*	For Vim version 8.0	Last change: 2020 September 16
+*SortFolds.txt*	For Vim version 8.0	Last change: 2021 February 8
 
-Version: 1.1.0
-Author : Oliver Breitwieser <oliver.breitwieser@gmail.com>
+Version: 1.2.0
+Author : Oliver Breitwieser <oliver@breitwieser.eu>
 License: MIT license
 
 
