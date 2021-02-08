@@ -65,6 +65,45 @@ CONFIGURATION                           *SortFolds-configuration*
     Default is 0
 
 ==============================================================================
+CUSTOM KEY FUNCTIONS                    *SortFolds-custom-key-function*
+
+                                        *g:sort_folds_key_function*
+
+    Sometimes you need to sort folds by some custom key. For this reason, you
+    can define a custom sort function in Python that maps fold contents
+    (essentially a list of lines) to a a key (a string) by which the fold will
+    be sorted.
+
+    Afterwards, you need to set |g:sort_folds_key_function| to the name of the
+    function.
+
+    Example: Sort BibTeX-entries by citekey~
+
+    BibTeX-entries can be of several types (`article`, `book`,
+    `inproceedings`, `online`, to name a few…). However, we might want to sort
+    them by citekey regardless of type.
+
+    Hence, we might add a piece of code to extract the citekey:
+>
+    py3 <<EOF
+    def get_citekey(fold):
+        # very crude extraction without regexes
+        return fold[0].split("{")[1].split(",")[0]
+
+    import sort_folds
+    sort_folds.register_key_function(get_citekey)
+    EOF
+
+    autocmd FileType bib let sort_folds_key_function="get_citekey"
+<
+    Note: `get_citekey` is already part of the |SortFolds-builtin-key-functions|
+
+==============================================================================
+BUILTIN KEY FUNCTIONS                   *SortFolds-builtin-key-functions*
+
+    `get_citekey`   Map a BibTeX-entry to its citekey.
+
+==============================================================================
 REQUIREMENTS                            *SortFolds-requirements*
 
     SortFolds needs |+python3| support enabled.

@@ -57,8 +57,8 @@ For this reason, you can define a custom sort function in Python that maps fold
 contents (essentially a list of lines) to a a key (a string) by which the fold
 will be sorted.
 
-Afterwards, you need to set `sort_folds_key_function` to the name of the
-function. You can either set it `g:`lobally or per `b:`uffer.
+Afterwards, you need to set `g:sort_folds_key_function` to the name of the
+function.
 
 ### Example: Sort BibTeX-entries by key only, but not entry type
 
