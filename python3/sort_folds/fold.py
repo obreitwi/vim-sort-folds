@@ -66,10 +66,22 @@ class Fold(object):
             return self._range[idx_or_slice]
 
     def __iter__(self):
-        return self._range.__iter__()
+        if vim.eval("has('nvim')") == "1":
+            return self._range.__iter__()
+        else:
+            return self._fallback_iter()
 
     def __len__(self):
         return self.end - self.start
+
+    def _fallback_iter(self):
+        """
+        Fallback implementation of an iterator over the range slice.
+
+        Needed because vim does not yet support iteration over Ranges.
+        """
+        for line in self._range[:]:
+            yield line
 
 
 def get_foldlevel_at(lineno):
