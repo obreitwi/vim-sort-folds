@@ -1,8 +1,21 @@
 #!/usr/bin/env python3
 # encoding: utf-8
 
+import functools as ft
 import vim
 from contextlib import contextmanager
+
+
+def cursor_preserving(func):
+    """
+    Decorator for functions so that cursor position is preserved.
+    """
+    @ft.wraps(func)
+    def wrapped(*args, **kwargs):
+        with preserve_cursor():
+            return func(*args, **kwargs)
+
+    return wrapped
 
 
 def normal(cmd):

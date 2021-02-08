@@ -4,7 +4,8 @@
 import vim
 
 from . import config
-from .utils import normal
+from .utils import normal, cursor_preserving
+
 
 class Fold(object):
     """
@@ -64,6 +65,7 @@ def get_foldlevel(lineno):
     return int(vim.eval("foldlevel({})".format(lineno)))
 
 
+@cursor_preserving
 def get_folds():
     """
     Map visible folds in the appropriate area [start, end].
@@ -71,9 +73,6 @@ def get_folds():
     We step through the region until we leave it or run out of folds.
     """
     cr = vim.current.range
-    # restore cursor position
-    pos = vim.current.window.cursor
-
     # set to starting line
     fold_start = cr.start
     fold_end = -1
@@ -111,9 +110,6 @@ def get_folds():
             yield fold
 
         fold_start = fold_end
-
-    # restore cursor position
-    vim.current.window.cursor = pos
 
 
 def line_range_to_foldlevel(start, end):
