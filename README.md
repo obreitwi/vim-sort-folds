@@ -1,5 +1,7 @@
 # SortFolds
 
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/obreitwi/vim-sort-folds/Run%20tests%20in%20vim)](https://github.com/obreitwi/vim-sort-folds/actions?query=workflow%3A%22Run+tests+in+vim%22)
+
 ## Overview
 
 ![](https://raw.github.com/obreitwi/vim-sort-folds/master/doc/demo.gif)  
