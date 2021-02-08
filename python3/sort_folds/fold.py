@@ -60,7 +60,7 @@ class Fold(object):
             yield line
 
 
-def get_foldlevel(lineno):
+def get_foldlevel_at(lineno):
     "Get foldlevel for given line number in current buffer."
     return int(vim.eval("foldlevel({})".format(lineno)))
 
@@ -79,14 +79,18 @@ def get_folds():
     # adjust for line numbers starting at one
     normal(cr.start + 1)
 
-    def next_fold():
-        "Advance to next fold and return line number."
+    def move_to_next_fold():
+        """
+        Advance to next fold and return line number.
+
+        :return: line number of next fold (0-indexed).
+        """
         normal("zj")
         # adjust for line numbers starting at one
         return int(vim.eval("line('.')"))-1
 
-    while fold_end != cr.end:
-        fold_end = min(next_fold(), cr.end)
+    while fold_end < cr.end:
+        fold_end = min(move_to_next_fold(), cr.end)
 
         if fold_end < fold_start:
             # we are iterating on the last fold, which is closed, therefore we
@@ -102,7 +106,7 @@ def get_folds():
             # adjust for having reached the end
             fold_end += 1
 
-        fold = Fold(level=get_foldlevel(fold_start),
+        fold = Fold(level=get_foldlevel_at(fold_start),
                     start=fold_start,
                     end=fold_end)
 
