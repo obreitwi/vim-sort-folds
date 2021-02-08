@@ -14,12 +14,33 @@ jobs:
     strategy:
       matrix:
         vim_type: ['vim', 'neovim']
-        vim_version: ['head', 'stable']
-        python_version: [ "3.6.x", "3.7.x", "3.8.x", "3.9.x" ]
+        vim_version: ['head']
+        python_version: [ "3.4.x", "3.5.x", "3.6.x", "3.7.x", "3.8.x", "3.9.x" ]
         include:
-          - vim_type: 'vim'
+          # specify "stable" version of vim -> linked against python3.4 only -> disable for now 
+          # - vim_type: 'vim'
+          #   vim_version: 'stable'
+          #   vim_vanilla_version: 'v8.2.0000'
+
+          # TODO: Find a way to add vim_version == 'stable' in matrix and filter out vim/stable
+          - vim_type: 'neovim'
             vim_version: 'stable'
-            vim_vanilla_version: 'v8.2.0000'
+            python_version: "3.4.x"
+          - vim_type: 'neovim'
+            vim_version: 'stable'
+            python_version: "3.5.x"
+          - vim_type: 'neovim'
+            vim_version: 'stable'
+            python_version: "3.6.x"
+          - vim_type: 'neovim'
+            vim_version: 'stable'
+            python_version: "3.7.x"
+          - vim_type: 'neovim'
+            vim_version: 'stable'
+            python_version: "3.8.x"
+          - vim_type: 'neovim'
+            vim_version: 'stable'
+            python_version: "3.9.x"
 
     steps:
       - uses: actions/checkout@v2
