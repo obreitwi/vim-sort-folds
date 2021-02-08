@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/usr/bin/env sh
 
 set -euo pipefail
 
@@ -11,6 +10,10 @@ fi
 while (( $# > 0 )); do
     dir_testcase="${1}"
     shift
+
+    version_info="[$EDITOR/$(python --version)]"
+
+    echo "${version_info} Testing ${dir_testcase}.." >&2
 
     file_cmd="${dir_testcase}/cmds.vim"
     file_in="${dir_testcase}/input.txt"
@@ -33,9 +36,10 @@ EOF
     rm "${file_cmd}"
 
     if diff "${file_out}" "${file_exp}"; then
+        echo "${version_info} SUCCESS"  >&2
         exit 0
     else
-        echo "TEST FAILED" >&2
+        echo "${version_info} FAILED" >&2
         cat messages.log >&2
         exit 1
     fi
