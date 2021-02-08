@@ -74,6 +74,9 @@ class Fold(object):
     def __len__(self):
         return self.end - self.start
 
+    def __str__(self):
+        return str(self._range[0])
+
     def _fallback_iter(self):
         """
         Fallback implementation of an iterator over the range slice.
