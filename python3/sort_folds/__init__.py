@@ -5,8 +5,6 @@
 # Maintainer:   Oliver Breitwieser
 #
 
-import vim
-
 __all__ = [
         "print_debug_info",
         "sort_folds",
