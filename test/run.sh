@@ -15,25 +15,16 @@ while (( $# > 0 )); do
 
     echo "${version_info} Testing ${dir_testcase}.." >&2
 
-    file_cmd="${dir_testcase}/cmds.vim"
+    file_cmd="${dir_testcase}/commands.vim"
     file_in="${dir_testcase}/input.txt"
     file_out="${dir_testcase}/output.txt"
     file_exp="${dir_testcase}/expected.txt"
 
     cp -v "${file_in}" "${file_out}"
 
-    cat >"${file_cmd}" <<EOF
-:set foldmethod=marker
-:%call SortFolds#SortFolds()
-:messages
-:wq
-EOF
-
     true > messages.log
 
     ${EDITOR} -V0messages.log -s "${file_cmd}" "${file_out}" 2>&1
-
-    rm "${file_cmd}"
 
     if diff "${file_out}" "${file_exp}"; then
         echo "${version_info} SUCCESS"  >&2
