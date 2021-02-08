@@ -10,11 +10,13 @@ from . import fold
 import vim
 
 
-def debug(sorting_line_number=1):
+def print_debug_info(sorting_line_number=1):
     """
     Print debug information about how folds are extracted and sorted.
 
     Useful for debugging.
+
+    :param sorting_line_number: Number to sort by.
     """
     print("###############")
     print("#  Extracted  #")
