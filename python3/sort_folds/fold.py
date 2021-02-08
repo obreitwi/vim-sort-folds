@@ -11,49 +11,62 @@ class Fold(object):
     """
     Object representing a fold in the current buffer.
     """
-    def __init__(self, level, start, *, end=None, length=None):
+    def __init__(self, start, *, end=None, length=None, buffer=None):
         """
             Create a new Fold.
 
-            :param level:   fold level (int)
-            :param start:   starting line (int)
-            :param end:     first line _after_ the fold
+            :param start:   starting line (int, 0-indexed)
+            :param end:     first line _after_ the fold (int, 0-indexed)
             :param length:  length of the fold.
+            :param buffer:  Supply an explicit buffer for which to create the fold.
+                            Defaults to vim.current.buffer.
         """
         if end is None and length is None:
             raise ValueError("Need to specify either end or length.")
         elif end is not None and length is not None:
             raise ValueError("Cannot specify both end and length.")
 
-        self._level = level
-        self._start = start
+        if buffer is None:
+            buffer = vim.current.buffer
 
         if length is None:
-            self._end = end
+            # NOTE: The range methods expect 1-indexed line numbers -> translate
+            self._range = buffer.range(start+1, end)
         else:
-            self._end = self.start + length
+            # NOTE: The range methods expect 1-indexed line numbers and is inclusive:
+            # the last line included is therefore `<translated start> + length - 1`
+            # where `<translated start> = start + 1`.
+            self._range = buffer.range(start+1, start+length)
+
+        self._level = get_foldlevel_at(self.start)
 
     @property
     def start(self):
         ":return: Starting line of fold."
-        return self._start
+        return self._range.start
 
     @property
     def end(self):
         ":return: First line not part of fold."
-        return self._end
+        return self._range.end
 
     @property
     def level(self):
         ":return: Level of fold."
         return self._level
 
-    def __getitem__(self, line_number):
-        return vim.current.buffer[self.start + line_number]
+    def __getitem__(self, idx_or_slice):
+        if isinstance(idx_or_slice, slice):
+            lines = []
+            start, stop, step = idx_or_slice.indices(len(self))
+            for idx in range(start, stop, step):
+                lines.append(self._range[idx])
+        else:
+            # regular index
+            return self._range[idx_or_slice]
 
     def __iter__(self):
-        for line in vim.current.buffer[self.start:self.end]:
-            yield line
+        return self._range.__iter__()
 
     def __len__(self):
         return self.end - self.start
@@ -105,9 +118,7 @@ def get_folds():
             # adjust for having reached the end
             fold_end += 1
 
-        fold = Fold(level=get_foldlevel_at(fold_start),
-                    start=fold_start,
-                    end=fold_end)
+        fold = Fold(start=fold_start, end=fold_end)
 
         if len(fold) > 0:
             yield fold
