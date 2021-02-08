@@ -72,6 +72,9 @@ py3 <<EOF
 def get_citekey(fold):
     # very crude extraction without regexes
     return fold[0].split("{")[1].split(",")[0]
+
+import sort_folds
+sort_folds.register_key_function(get_citekey)
 EOF
 
 autocmd FileType bib let sort_folds_key_function="get_citekey"
@@ -79,6 +82,7 @@ autocmd FileType bib let sort_folds_key_function="get_citekey"
 
 Note: `get_citekey` is already part of the
 [builtin functions](python3/sort_folds/key_functions.py).
+
 
 ## Python 3
 

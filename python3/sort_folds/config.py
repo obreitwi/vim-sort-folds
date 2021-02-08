@@ -6,7 +6,7 @@ Module to extract user settings from vim.
 """
 
 
-from .key_functions import *
+from . import key_functions
 
 import vim
 
@@ -28,7 +28,7 @@ def get_key_function():
     if vim.eval("exists('g:sort_folds_key_function')") == "1":
         function_name = vim.eval("g:sort_folds_key_function")
         try:
-            return globals()[function_name]
+            return key_functions.get(function_name)
         except KeyError:
             raise RuntimeError(
                 "Could not find custom key-function: {}".format(function_name)
