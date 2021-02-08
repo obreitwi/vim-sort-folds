@@ -7,6 +7,8 @@ This module contains all debug related functionality.
 
 from . import fold
 
+import vim
+
 
 def debug(sorting_line_number=1):
     """
@@ -18,14 +20,14 @@ def debug(sorting_line_number=1):
     print("#  Extracted  #")
     print("###############")
 
-    print_folds(get_folds())
+    print_folds(fold.get_folds())
 
     print("############")
     print("#  Sorted  #")
     print("############")
 
-    sorted_folds = sorted(get_folds(),
-                          key=get_fold_to_sort_key(sorting_line_number))
+    sorted_folds = sorted(fold.get_folds(),
+                          key=fold.get_fold_to_sort_key(sorting_line_number))
     print_folds(sorted_folds)
 
 
@@ -46,5 +48,3 @@ def print_folds(folds):
         print("---")
         for line in fold.lines:
             print(fold.level, line)
-
-
