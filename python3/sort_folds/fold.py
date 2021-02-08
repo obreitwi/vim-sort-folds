@@ -48,16 +48,15 @@ class Fold(object):
         ":return: Level of fold."
         return self._level
 
-    def __len__(self):
-        return self.end - self.start
-
     def __getitem__(self, line_number):
         return vim.current.buffer[self.start + line_number]
 
-    @property
-    def lines(self):
+    def __iter__(self):
         for line in vim.current.buffer[self.start:self.end]:
             yield line
+
+    def __len__(self):
+        return self.end - self.start
 
 
 def get_foldlevel_at(lineno):
