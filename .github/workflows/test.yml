@@ -36,6 +36,10 @@ jobs:
           vim_version: '${{ matrix.vim_vanilla_version || matrix.vim_version }}'
           download: always
 
+      - name: Ensure pynvim
+        if: matrix.vim_type == 'neovim'
+        run: python3 -m pip install --user --upgrade pynvim
+
       - name: Setup environment
         run: |
           echo "EDITOR=${{ steps.vim.outputs.executable }}" >> $GITHUB_ENV
