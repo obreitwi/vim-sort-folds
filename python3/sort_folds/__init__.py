@@ -6,10 +6,9 @@
 #
 
 __all__ = [
-        "print_debug_info",
-        "register_key_function"
-        "sort_folds",
-    ]
+    "print_debug_info",
+    "register_key_function" "sort_folds",
+]
 
 __version__ = "1.1.0"
 

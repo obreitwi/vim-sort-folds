@@ -11,15 +11,16 @@ class Fold(object):
     """
     Object representing a fold in the current buffer.
     """
+
     def __init__(self, start, *, end=None, length=None, buffer=None):
         """
-            Create a new Fold.
+        Create a new Fold.
 
-            :param start:   starting line (int, 0-indexed)
-            :param end:     first line _after_ the fold (int, 0-indexed)
-            :param length:  length of the fold.
-            :param buffer:  Supply an explicit buffer for which to create the fold.
-                            Defaults to vim.current.buffer.
+        :param start:   starting line (int, 0-indexed)
+        :param end:     first line _after_ the fold (int, 0-indexed)
+        :param length:  length of the fold.
+        :param buffer:  Supply an explicit buffer for which to create the fold.
+                        Defaults to vim.current.buffer.
         """
         if end is None and length is None:
             raise ValueError("Need to specify either end or length.")
@@ -31,12 +32,12 @@ class Fold(object):
 
         if length is None:
             # NOTE: The range methods expect 1-indexed line numbers -> translate
-            self._range = buffer.range(start+1, end)
+            self._range = buffer.range(start + 1, end)
         else:
             # NOTE: The range methods expect 1-indexed line numbers and is inclusive:
             # the last line included is therefore `<translated start> + length - 1`
             # where `<translated start> = start + 1`.
-            self._range = buffer.range(start+1, start+length)
+            self._range = buffer.range(start + 1, start + length)
 
         self._level = get_foldlevel_at(self.start)
 
@@ -114,7 +115,7 @@ def get_folds():
         """
         normal("zj")
         # adjust for line numbers starting at one
-        return int(vim.eval("line('.')"))-1
+        return int(vim.eval("line('.')")) - 1
 
     folds = []
 

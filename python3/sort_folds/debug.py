@@ -28,14 +28,15 @@ def print_debug_info(sorting_line_number=1):
     print("#  Sorted  #")
     print("############")
 
-    sorted_folds = sorted(fold.get_folds(),
-                          key=fold.get_fold_to_sort_key(sorting_line_number))
+    sorted_folds = sorted(
+        fold.get_folds(), key=fold.get_fold_to_sort_key(sorting_line_number)
+    )
     print_folds(sorted_folds)
 
 
 def print_folds(folds):
     """
-        Prints all supplied folds for debug purposes.
+    Prints all supplied folds for debug purposes.
     """
     for fold in folds:
         print("---")

@@ -10,6 +10,7 @@ def cursor_preserving(func):
     """
     Decorator for functions so that cursor position is preserved.
     """
+
     @ft.wraps(func)
     def wrapped(*args, **kwargs):
         with preserve_cursor():

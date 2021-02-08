@@ -11,7 +11,7 @@ _registered_functions = {}
 
 def get(name):
     """
-    Get the key function with the supplied name. 
+    Get the key function with the supplied name.
 
     :param name: Name of the key function to return.
     :return: Key function with name `name` that was previously registered.
