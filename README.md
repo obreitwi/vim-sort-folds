@@ -24,7 +24,7 @@ Furthermore, it is possible to sort based on other lines than then first.
 
 ## Requirements
 
-* Python 3.4+
+* Python 3.5+ (3.4+ should be fine, but tests only cover Python 3.5+)
 * Relatively recent version of `vim` (8.0.0+, no guarantees about 7.x.x)/`neovim` with support for Python 3.
   * `vim`: 8.0.0+, 7.x.x are untested but might still work… tested again `HEAD`
   * `neovim`: all versions supported, currently testing against the latest stable (`v0.4.4`) and `HEAD`.
