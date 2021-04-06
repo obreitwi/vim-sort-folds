@@ -13,37 +13,21 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        vim_type: ['vim', 'neovim']
-        vim_version: ['head']
+        vim_type: ['neovim']
+        vim_version: ['head', 'stable']
         python_version: [ "3.5.x", "3.6.x", "3.7.x", "3.8.x", "3.9.x" ]
         include:
-          # specify "stable" version of vim -> linked against python3.4 only -> disable for now 
-          # - vim_type: 'vim'
-          #   vim_version: 'stable'
-          #   vim_vanilla_version: 'v8.2.0000'
-
-          # TODO: Find a way to add vim_version == 'stable' in matrix and filter out vim/stable
-          - vim_type: 'neovim'
-            vim_version: 'stable'
-            python_version: "3.5.x"
-          - vim_type: 'neovim'
-            vim_version: 'stable'
+          # vim is built against 3.6.x at the moment
+          - vim_type: 'vim'
+            vim_version: 'head'
             python_version: "3.6.x"
-          - vim_type: 'neovim'
-            vim_version: 'stable'
-            python_version: "3.7.x"
-          - vim_type: 'neovim'
-            vim_version: 'stable'
-            python_version: "3.8.x"
-          - vim_type: 'neovim'
-            vim_version: 'stable'
-            python_version: "3.9.x"
 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
+        id: python
         with:
-          python-version: '${{ matrix.python_version }}'
+          python-version: ${{ matrix.python_version }}
 
       - name: Setup Vim
         id: vim
@@ -52,11 +36,11 @@ jobs:
           cache: true
           download: always
           gui: false
-          vim_type: '${{ matrix.vim_type }}'
-          vim_version: '${{ matrix.vim_vanilla_version || matrix.vim_version }}'
+          vim_type: ${{ matrix.vim_type }}
+          vim_version: ${{ matrix.vim_version }}
 
       - name: Ensure pynvim
-        if: matrix.vim_type == 'neovim'
+        if: ${{ matrix.vim_type == 'neovim' }}
         run: python3 -m pip install --user --upgrade pynvim
 
       - name: Setup environment

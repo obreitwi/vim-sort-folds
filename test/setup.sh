@@ -9,10 +9,26 @@ symlink() {
     ln -sfv "$@"
 }
 
-append_package_load()
+append_load_package()
 {
     cat <<EOF >>"${1}"
 set runtimepath^=${FOLDER_PLUGIN} runtimepath+=${FOLDER_PLUGIN}/after
+EOF
+}
+
+append_load_python()
+{
+    cat <<EOF >>"${1}"
+if !has('nvim')
+  set pythonthreedll="${pythonLocation}/lib/libpython3.so"
+endif
+EOF
+}
+
+append_print_python_version()
+{
+    cat <<EOF >>"${1}"
+py3 import sys; print(sys.version)
 EOF
 }
 
@@ -20,10 +36,15 @@ echo "Setting up for $(${EDITOR} --version)" >&2
 
 # check if nvim exists
 if [ "${EDITOR}" = "nvim" ]; then
-    mkdir -p "${HOME}/.config/nvim"
-    append_package_load "${HOME}/.config/nvim/init.vim"
+    config="${HOME}/.config/nvim/init.vim"
+    mkdir -p "$(dirname "${config}")"
+    true > "${config}"
+    append_print_python_version "${config}"
+    append_load_package "${config}"
 else
-    mkdir -p "${HOME}/.vim"
-    append_package_load "${HOME}/.vim/vimrc"
+    config="${HOME}/.vim/vimrc"
+    mkdir -p "$(dirname "${config}")"
+    true > "${config}"
+    append_print_python_version "${config}"
+    append_load_package "${config}"
 fi
-
