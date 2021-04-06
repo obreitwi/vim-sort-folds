@@ -15,7 +15,7 @@ jobs:
       matrix:
         vim_type: ['vim', 'neovim']
         vim_version: ['head']
-        python_version: [ "3.4.x", "3.5.x", "3.6.x", "3.7.x", "3.8.x", "3.9.x" ]
+        python_version: [ "3.5.x", "3.6.x", "3.7.x", "3.8.x", "3.9.x", "3.10.x" ]
         include:
           # specify "stable" version of vim -> linked against python3.4 only -> disable for now 
           # - vim_type: 'vim'
