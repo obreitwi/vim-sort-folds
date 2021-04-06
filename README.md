@@ -22,6 +22,15 @@ is to sort functions alphabetically after the fact.
 
 Furthermore, it is possible to sort based on other lines than then first.
 
+## Requirements
+
+* Python 3.4+
+* Relatively recent version of `vim` (8.0.0+, no guarantees about 7.x.x)/`neovim` with support for Python 3.
+  * `vim`: 8.0.0+, 7.x.x are untested but might still work… tested again `HEAD`
+  * `neovim`: all versions supported, currently testing against the latest stable (`v0.4.4`) and `HEAD`.
+
+### Python 2
+The last Python 2 compatible commit is still available as tag [`last-py2`](https://github.com/obreitwi/vim-sort-folds/releases/tag/last-py2).
 
 ## Installation
 
@@ -82,10 +91,3 @@ autocmd FileType bib let sort_folds_key_function="get_citekey"
 
 Note: `get_citekey` is already part of the
 [builtin functions](python3/sort_folds/key_functions.py).
-
-
-## Python 3
-
-`vim-sort-folds` is now Python 3 compatible. The last Python 2 compatible
-commit is still available as tag
-[`last-py2`](https://github.com/obreitwi/vim-sort-folds/releases/tag/last-py2).
