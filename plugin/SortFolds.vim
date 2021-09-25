@@ -27,4 +27,6 @@ if !hasmapto("<Plug>SortFolds", "v")
     vmap <leader>sf <Plug>SortFolds
 endif
 
+command! -range SortFolds <line1>,<line2>call SortFolds#SortFolds()
+
 let &cpo = s:save_cpo
