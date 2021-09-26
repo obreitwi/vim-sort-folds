@@ -1,4 +1,4 @@
-*SortFolds.txt*	For Vim version 8.0	Last change: 2021 February 8
+*SortFolds.txt*	For Vim version 8.0	Last change: 2021 September 26
 
 Version: 1.2.0
 Author : Oliver Breitwieser <oliver@breitwieser.eu>
@@ -42,6 +42,16 @@ MAPPINGS                                *SortFolds-mappings*
 >
     :call SortFolds#SortFolds()
 
+==============================================================================
+COMMANDS                                *SortFolds-commands*
+
+                                        *:SortFolds*
+
+    This plugin provides a |SortFolds|-command that can be applied to a range.
+    Example:
+>
+    :120,240SortFolds
+<
 ==============================================================================
 SORTING BY OTHER LINES IN FOLD          *SortFolds-custom-sort-line*
 
