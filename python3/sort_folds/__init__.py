@@ -10,7 +10,7 @@ __all__ = [
     "register_key_function" "sort_folds",
 ]
 
-__version__ = "1.2.0"
+__version__ = "1.3.0"
 
 from . import key_functions
 from .sort import sort_folds

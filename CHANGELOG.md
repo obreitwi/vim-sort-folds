@@ -1,3 +1,7 @@
+## v1.3.0
+
+* Added convenience command `:SortFolds` to call on ranges (thanks @jeetsukumaran).
+
 ## v1.2.0
 
 * Internal:
